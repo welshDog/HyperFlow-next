@@ -1,4 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hyperflow Editor
+
+Hyperflow Editor is a neurodivergent‑friendly visual workspace for building, versioning, and sharing node‑based data flows.
+
+## Key Features
+- Visual canvas with low‑distraction Zen Mode for focused editing
+- Version History with safe restore and guardrails
+- Accessible UI (keyboard navigation, semantic structure) and a11y checks
+- Built‑in testing: Vitest unit tests, Playwright E2E and visual regression
+- Performance budgets and monitoring hooks (Lighthouse/CI ready)
+- Environment validation with Zod and configurable “Hyper Super Powers” toggles
+- Works with Supabase/Postgres via Prisma for data operations
+
+## Why It Matters
+Think of Hyperflow like a whiteboard that remembers everything. You drag and connect blocks (nodes) to map how data moves, and the app keeps versions, checks accessibility, and protects you from breaking things. It’s designed to reduce cognitive load — clean visuals, consistent patterns, and quick feedback — so you can focus on ideas, not wrestling with tooling.
+
+## When You’d Use It
+- Prototype a data pipeline or transformation workflow
+- Explain and document system behavior to non‑technical stakeholders
+- Teach flow‑based thinking with live, visual examples
+- Validate UI components and flows with tests and performance checks
+
+## Prerequisites
+- Node.js 20+ and a package manager (npm, yarn, pnpm, or bun)
+- A Supabase project (for auth/data) or a Postgres database URL
+- Basic environment variables configured in a local file
+
+## Getting Started
+1. Clone the repo
+   ```bash
+   git clone <your-fork-or-repo>
+   cd hyperflow-editor
+   ```
+2. Create your environment file
+   - Copy `.env.example` to `.env.local`
+   - Fill the placeholders (minimum):
+     - `NEXT_PUBLIC_SUPABASE_URL`
+     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+     - `DATABASE_URL`
+   - Keep real secrets in `.env.local` (do not commit)
+3. Install dependencies
+   ```bash
+   npm install
+   ```
+4. Run the app
+   ```bash
+   npm run dev
+   # open http://localhost:3000
+   ```
+5. Optional: Quality checks
+   ```bash
+   npm run lint
+   npm run typecheck
+   npm run test
+   npm run e2e
+   ```
+
+## What’s Inside
+- Next.js (App Router), TypeScript, Tailwind
+- Supabase client/server utilities, Prisma adapter for Postgres
+- Zod‑validated environment setup
+- CI pipeline: lint → typecheck → test → build → E2E → Lighthouse
+
+## Friendly Analogy
+It’s like building with LEGO: you snap together blocks to shape a flow. Hyperflow handles the instructions, safety checks, and a neat shelf of past versions — so you can experiment freely and revert confidently.
+
 
 ## Getting Started
 
