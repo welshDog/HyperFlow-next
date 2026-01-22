@@ -1,5 +1,9 @@
 # Hyperflow Editor
 
+## Badges
+- [![CI](https://img.shields.io/badge/CI-setup_pending-lightgrey)](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/.github/workflows/ci.yml)
+- [![Docs Check](https://img.shields.io/badge/Docs_Check-configured-blue)](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/.github/workflows/docs-check.yml)
+
 Hyperflow Editor is a neurodivergent‑friendly visual workspace for building, versioning, and sharing node‑based data flows.
 
 ## Key Features
@@ -60,6 +64,16 @@ Think of Hyperflow like a whiteboard that remembers everything. You drag and con
 - Supabase client/server utilities, Prisma adapter for Postgres
 - Zod‑validated environment setup
 - CI pipeline: lint → typecheck → test → build → E2E → Lighthouse
+
+## Docs Index
+- [Quickstart](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/quickstart.md)
+- [Architecture](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/architecture.md)
+- [Design Principles](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/design-principles.md)
+- [Accessibility](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/accessibility.md)
+- [Language](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/language.md)
+- [Testing](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/testing.md)
+- [Performance](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/performance.md)
+- [Roadmap](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/roadmap.md)
 
 ## Friendly Analogy
 It’s like building with LEGO: you snap together blocks to shape a flow. Hyperflow handles the instructions, safety checks, and a neat shelf of past versions — so you can experiment freely and revert confidently.
