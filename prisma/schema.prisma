@@ -67,3 +67,48 @@ model FlowVersion {
 
   @@unique([flowId, version])
 }
+
+model Survey {
+  id        String   @id @default(cuid())
+  specId    String
+  version   String
+  meta      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  responses SurveyResponse[]
+}
+
+model SurveyResponse {
+  id          String   @id @default(cuid())
+  surveyId    String
+  userId      String?
+  token       String?  @unique
+  status      String   @default("partial") // partial | submitted
+  anonymity   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  survey      Survey   @relation(fields: [surveyId], references: [id], onDelete: Cascade)
+  answers     SurveyAnswer[]
+}
+
+model SurveyAnswer {
+  id          String   @id @default(cuid())
+  responseId  String
+  questionId  String
+  value       Json
+
+  response    SurveyResponse @relation(fields: [responseId], references: [id], onDelete: Cascade)
+  @@unique([responseId, questionId])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String
+  diff      Json
+  createdAt DateTime @default(now())
+}
