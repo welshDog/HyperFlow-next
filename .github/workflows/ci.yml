@@ -29,9 +29,15 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm run test -- --run
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: E2E
-        run: npm run e2e -- --reporter=list
       - name: Build
         run: npm run build
+      - name: Start App Server
+        run: |
+          nohup npm run start &
+          npx wait-on http://localhost:3000
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: E2E Visual Regression
+        run: npm run e2e -- --reporter=list
+      - name: Lighthouse CI
+        run: npx @lhci/cli autorun --upload.target=filesystem --collect.startServerCommand="npm run start" --collect.url=http://localhost:3000/
