@@ -27,6 +27,10 @@ const HyperSchema = z.object({
   HYPER_ENABLE_TOASTS: z.coerce.boolean().default(true),
   HYPER_ENABLE_AUTH_GUARDS: z.coerce.boolean().default(true),
   HYPER_ENABLE_MONITORING: z.coerce.boolean().default(true),
+  HYPER_KILL_SWITCH: z.coerce.boolean().default(false),
+  HYPER_ALLOW_BULK_EXPORT: z.coerce.boolean().default(false),
+  HYPER_ALLOW_SYSTEM_CONFIG: z.coerce.boolean().default(false),
+  HYPER_ALLOW_USER_MANAGEMENT: z.coerce.boolean().default(false),
   HYPER_MAX_CONCURRENCY: z.coerce.number().int().min(1).max(16).default(4),
   HYPER_PAGINATION_LIMIT: z.coerce.number().int().min(10).max(100).default(20),
   HYPER_VERSION_HISTORY_LIMIT: z.coerce.number().int().min(20).default(1000),
@@ -41,6 +45,7 @@ const HyperSchema = z.object({
   HYPER_DEBUG_FEATURES: z.coerce.boolean().default(false),
   HYPER_MONITOR_INTERVAL_MS: z.coerce.number().int().min(1000).max(60000).default(10000),
   HYPER_METRICS_DESTINATION: z.enum(["console", "file", "http"]).default("console"),
+  HYPER_MESSAGE_SECRET: z.string().min(1).default("dev-secret"),
 });
 
 export const hyper = HyperSchema.parse({
@@ -52,6 +57,10 @@ export const hyper = HyperSchema.parse({
   HYPER_ENABLE_TOASTS: process.env.HYPER_ENABLE_TOASTS,
   HYPER_ENABLE_AUTH_GUARDS: process.env.HYPER_ENABLE_AUTH_GUARDS,
   HYPER_ENABLE_MONITORING: process.env.HYPER_ENABLE_MONITORING,
+  HYPER_KILL_SWITCH: process.env.HYPER_KILL_SWITCH,
+  HYPER_ALLOW_BULK_EXPORT: process.env.HYPER_ALLOW_BULK_EXPORT,
+  HYPER_ALLOW_SYSTEM_CONFIG: process.env.HYPER_ALLOW_SYSTEM_CONFIG,
+  HYPER_ALLOW_USER_MANAGEMENT: process.env.HYPER_ALLOW_USER_MANAGEMENT,
   HYPER_MAX_CONCURRENCY: process.env.HYPER_MAX_CONCURRENCY,
   HYPER_PAGINATION_LIMIT: process.env.HYPER_PAGINATION_LIMIT,
   HYPER_VERSION_HISTORY_LIMIT: process.env.HYPER_VERSION_HISTORY_LIMIT,
@@ -66,4 +75,5 @@ export const hyper = HyperSchema.parse({
   HYPER_DEBUG_FEATURES: process.env.HYPER_DEBUG_FEATURES,
   HYPER_MONITOR_INTERVAL_MS: process.env.HYPER_MONITOR_INTERVAL_MS,
   HYPER_METRICS_DESTINATION: process.env.HYPER_METRICS_DESTINATION,
+  HYPER_MESSAGE_SECRET: process.env.HYPER_MESSAGE_SECRET,
 });
