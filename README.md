@@ -1,5 +1,13 @@
 # Hyperflow Editor
 
+<div align="center">
+  <h3>Part of the <a href="https://github.com/welshDog/My-GitHub-CareTaker">HyperCode Ecosystem</a> 🧠✨</h3>
+  <p>
+    <em>Programming languages express how minds think. We're building one that thinks like <strong>US</strong>.</em>
+  </p>
+</div>
+
+
 ## Badges
 - [![CI](https://img.shields.io/badge/CI-setup_pending-lightgrey)](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/.github/workflows/ci.yml)
 - [![Docs Check](https://img.shields.io/badge/Docs_Check-configured-blue)](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/.github/workflows/docs-check.yml)
@@ -64,6 +72,29 @@ Think of Hyperflow like a whiteboard that remembers everything. You drag and con
 - Supabase client/server utilities, Prisma adapter for Postgres
 - Zod‑validated environment setup
 - CI pipeline: lint → typecheck → test → build → E2E → Lighthouse
+
+## Auth & Backend Integration
+
+- Required scopes: `editor:read`, `editor:write`
+- REST endpoints (OpenAPI v3):
+  - `POST /api/v2/editor/project`
+  - `GET /api/v2/editor/project/{id}`
+- WebSocket channel: `wss://<API_BASE>/editor/ws`
+
+### Quick Start (.env.local)
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+DATABASE_URL=
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+NEXT_PUBLIC_WS_URL=ws://localhost:8000/editor/ws
+```
+
+### Compatibility
+
+- Editor ≥ 2.3.0 requires Backend ≥ 4.5.0
+- Terminal ≥ 1.1.0 requires Backend ≥ 4.5.0
 
 ## Docs Index
 - [Quickstart](file:///c:/Users/lyndz/Downloads/My%20Hyper%20Agents/hyperflow-editor/docs/quickstart.md)
