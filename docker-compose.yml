@@ -1,0 +1,29 @@
+services:
+  hyperflow-next:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hyperflow-next
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/hyperflow
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - HYPER_ENABLE_POWERS=true
+    networks:
+      - hypercode_data_net
+      - hypercode_frontend_net
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+networks:
+  hypercode_data_net:
+    external: true
+  hypercode_frontend_net:
+    external: true

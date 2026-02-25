@@ -18,18 +18,19 @@ const QuerySchema = z.object({
   sortOrder: z.enum(["asc", "desc"]).default("desc"),
 });
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const user = await getServerUser();
   if (hyper.HYPER_ENABLE_AUTH_GUARDS && !hasAnyRole(user, ["Administrator", "Evaluator", "Viewer"])) {
     return NextResponse.json({ error: unauthorized("Insufficient permissions to view evaluations") }, { status: 403 });
   }
+  const { id } = await params;
   const url = new URL(req.url);
   const parsed = QuerySchema.safeParse(Object.fromEntries(url.searchParams.entries()));
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid query", issues: parsed.error.issues }, { status: 400 });
   }
   const { page, limit, evaluatorType, startMs, endMs, minScore, sortBy, sortOrder } = parsed.data;
-  const result = await listByMission(params.id, page, limit, { evaluatorType, startMs, endMs, minScore, sortBy, sortOrder });
+  const result = await listByMission(id, page, limit, { evaluatorType, startMs, endMs, minScore, sortBy, sortOrder });
   const privileged = hasAnyRole(user, ["Administrator", "Evaluator"]);
   const items = privileged ? result.items : filterEvaluationsForViewer(result.items);
   const totalPages = Math.ceil(result.total / limit);

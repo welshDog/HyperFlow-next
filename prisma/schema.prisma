@@ -122,6 +122,7 @@ model Evaluation {
   createdAt      DateTime @default(now())
 
   @@index([missionId, evaluatorType])
+}
 
 model UserProfile {
   id        String   @id @default(cuid())

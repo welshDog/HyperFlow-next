@@ -1,5 +1,7 @@
 import { listSurveyResponses } from "@/app/actions/survey";
 
+export const dynamic = "force-dynamic";
+
 function avg(nums: number[]) {
   return nums.length ? Math.round(nums.reduce((a, b) => a + b, 0) / nums.length) : 0;
 }
